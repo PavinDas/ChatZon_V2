@@ -1,10 +1,18 @@
 import 'package:chatzon/common/widgets/custom_button.dart';
 import 'package:chatzon/constants/consts.dart';
 import 'package:chatzon/constants/images.dart';
+import 'package:chatzon/features/auth/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
+
+  void navigateToLoginScreen(BuildContext context) {
+    Navigator.pushNamed(
+      context,
+      LoginScreen.routName,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +64,7 @@ class LandingScreen extends StatelessWidget {
               width: size.width * 0.75,
               child: CustomButton(
                 text: agreeAndContinue,
-                onPressed: () {},
+                onPressed: () => navigateToLoginScreen(context),
               ),
             ),
           ],

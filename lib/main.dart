@@ -1,6 +1,6 @@
 import 'package:chatzon/constants/colors.dart';
 import 'package:chatzon/constants/strings.dart';
-import 'package:chatzon/features/auth/screens/login_screen.dart';
+import 'package:chatzon/features/landing/screens/landing_screen.dart';
 import 'package:chatzon/firebase_options.dart';
 import 'package:chatzon/router.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -25,9 +25,12 @@ class MyApp extends StatelessWidget {
       title: appName,
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor,
+        appBarTheme: const AppBarTheme(
+          color: appBarColor
+        )
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: const LoginScreen(),
+      home: const LandingScreen(),
     );
   }
 }
