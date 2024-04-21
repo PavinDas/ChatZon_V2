@@ -1,4 +1,5 @@
 import 'package:chatzon/constants/colors.dart';
+import 'package:chatzon/constants/consts.dart';
 import 'package:chatzon/widgets/contacts_list.dart';
 import 'package:flutter/material.dart';
 class MobileLayoutScreen extends StatelessWidget {
@@ -14,9 +15,9 @@ class MobileLayoutScreen extends StatelessWidget {
           backgroundColor: appBarColor,
           centerTitle: false,
           title: const Text(
-            'WhatsApp',
+            appName,
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 25,
               color: Colors.grey,
               fontWeight: FontWeight.bold,
             ),
