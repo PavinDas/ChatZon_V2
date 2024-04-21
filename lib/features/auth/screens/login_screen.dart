@@ -1,5 +1,6 @@
 import 'package:chatzon/common/widgets/custom_button.dart';
 import 'package:chatzon/constants/consts.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,11 +13,25 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final phoneController = TextEditingController();
+  Country? country;
 
   @override
   void dispose() {
     super.dispose();
     phoneController.dispose();
+  }
+
+  void picCountry() {
+    showCountryPicker(
+      context: context,
+      onSelect: (Country _country) {
+        setState(
+          () {
+            country = _country;
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -49,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 10,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () => picCountry(),
               child: const Text(
                 selectCountry,
                 style: TextStyle(
@@ -62,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Row(
               children: [
-                const Text('+91'),
+                if (country != null) Text('+${country!.phoneCode}'),
                 const SizedBox(
                   width: 10,
                 ),
@@ -77,16 +92,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-            SizedBox(
-              height: size.height * 0.6,
-            ),
+            // SizedBox(
+            //   height: size.height * 0.6,
+            // ),
+            Spacer(),
             SizedBox(
               width: 90,
               child: CustomButton(
-                text: next.toLowerCase(),
+                text: next.toUpperCase(),
                 onPressed: () {},
               ),
-            )
+            ),
+            SizedBox(
+              height: 20,
+            ),
           ],
         ),
       ),
